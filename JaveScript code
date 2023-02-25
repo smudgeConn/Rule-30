@@ -1,0 +1,61 @@
+function rule30(list, n){
+  if(n==0){return list;}
+  
+  let prep = list;
+  let output = [];
+  let trio = [];
+
+//prep
+      prep.unshift(0);
+      prep.push(0);
+
+//trios
+    for (let x = 0; x < prep.length; x++) {
+      if (x == 0) {
+        trio = [0, prep[x], prep[x+1]];
+      } else if (x == prep.length-1) {
+        trio = [prep[x-1], prep[x], 0];
+      } else {
+        trio = [prep[x-1], prep[x], prep[x+1]];
+      }
+
+//output      
+      switch (trio.join('')) {
+          case '000':
+            output.push(0);
+            break;
+          
+          case '001':
+            output.push(1);
+            break;
+          
+          case '001':
+            output.push(1);
+            break;
+          
+          case '010':
+            output.push(1);
+            break;
+          
+          case '011':
+            output.push(1);
+            break;
+          
+          case '100':
+            output.push(1);
+            break; 
+                  
+          case '101':
+            output.push(0);
+            break;
+          
+          case '110':
+            output.push(0);
+            break;          
+          case '111':
+            output.push(0);
+            break;            
+      }
+    }
+  return rule30(output,n-1);
+}
